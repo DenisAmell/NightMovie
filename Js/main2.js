@@ -26,6 +26,7 @@ const modalContent = document.querySelector('.modal__content');
 const nightM = document.querySelector('.night-m');
 const pagination = document.querySelector('.pagination');
 const tvBegin = document.querySelector('.tv-begin');
+const footerM = document.querySelector('.footer-m')
 
 const loading = document.createElement('div');
 loading.className = 'loading';
@@ -187,6 +188,24 @@ leftMenu.addEventListener('click', event =>{
 	}
 });
 
+footerM.addEventListener('click', event => {
+	event.preventDefault();
+	const target = event.target;
+	if (target.closest('#top-rated')){
+		new DBService().getTopRated().then((response) => renderCard(response, target));
+	}
+	if (target.closest('#popular')){
+		new DBService().getPopular().then((response) => renderCard(response, target));
+	}
+	if (target.closest('#week')){
+		new DBService().getWeek().then((response) => renderCard(response, target));
+	}
+	if (target.closest('#today')){
+		new DBService().getToday().then((response) => renderCard(response, target));
+	}
+
+});
+
 // Открытие модального окна
 
 tvShowsList.addEventListener('click', event => {
@@ -257,6 +276,8 @@ nightM.addEventListener ('click', event =>{
 		})
 	}
 });
+
+
 
 tvShowsList.addEventListener('mouseover', changeImage);
 tvShowsList.addEventListener('mouseout', changeImage);

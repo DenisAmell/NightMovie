@@ -1275,6 +1275,9 @@ footer img{
     display: block;
     padding-top: 20px;
 }
+.footer2 a:hover{
+    text-decoration: underline;
+}
 .footer2 div{
     margin-right: 40px;
 }
